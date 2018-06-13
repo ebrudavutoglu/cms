@@ -7,7 +7,7 @@
                     <h1 class="m-0 text-dark">Ürün Listesi</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
-                    <a href="#" class="btn pull-right btn-info"><i class="fa fa-plus"></i> Yeni Ekle</a>
+                    <a href="<?php echo base_url("product/new_form"); ?>" class="btn pull-right btn-info"><i class="fa fa-plus"></i> Yeni Ekle</a>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->

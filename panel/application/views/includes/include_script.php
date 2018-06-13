@@ -38,3 +38,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets'); ?>/assets/js/demo.js"></script>
 <script src="<?php echo base_url('assets'); ?>/plugins/iCheck/icheck.min.js"></script>
+<!-- CK Editor -->
+<script src="<?php echo base_url('assets'); ?>/plugins/ckeditor/ckeditor.js"></script>
