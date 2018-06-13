@@ -12,7 +12,7 @@
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <?php $this->load->view('dashboard_v/content'); ?>
+    <?php $this->load->view("{$viewFolder}/{$subViewFolder}/content"); ?>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">

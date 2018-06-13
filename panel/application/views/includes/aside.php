@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="<?php echo base_url("product"); ?>" class="nav-link">
               <i class="nav-icon fa fa-cubes"></i>
               <p>
                 Ürünler
