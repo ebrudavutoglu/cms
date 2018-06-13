@@ -11,7 +11,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to use, copy, modify, merge, publish, ribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -257,11 +257,11 @@ class CI_Image_lib {
 	protected $wm_shadow_color	= '';
 
 	/**
-	 * Dropshadow distance
+	 * Dropshadow ance
 	 *
 	 * @var int
 	 */
-	public $wm_shadow_distance	= 2;
+	public $wm_shadow_ance	= 2;
 
 	/**
 	 * Image opacity: 1 - 100  Only works with image
@@ -440,7 +440,7 @@ class CI_Image_lib {
 		$this->wm_hor_offset 		= 0;
 		$this->wm_vrt_offset 		= 0;
 		$this->wm_font_color		= '#ffffff';
-		$this->wm_shadow_distance 	= 2;
+		$this->wm_shadow_ance 	= 2;
 		$this->wm_opacity 			= 50;
 		$this->create_fnc 			= 'imagecreatetruecolor';
 		$this->copy_fnc 			= 'imagecopyresampled';
@@ -1329,7 +1329,7 @@ class CI_Image_lib {
 
 		if ($this->wm_use_drop_shadow === FALSE)
 		{
-			$this->wm_shadow_distance = 0;
+			$this->wm_shadow_ance = 0;
 		}
 
 		$this->wm_vrt_alignment = strtoupper($this->wm_vrt_alignment[0]);
@@ -1342,13 +1342,13 @@ class CI_Image_lib {
 		}
 		elseif ($this->wm_vrt_alignment === 'B')
 		{
-			$y_axis += $this->orig_height - $fontheight - $this->wm_shadow_distance - ($fontheight / 2);
+			$y_axis += $this->orig_height - $fontheight - $this->wm_shadow_ance - ($fontheight / 2);
 		}
 
 		// Set horizontal alignment
 		if ($this->wm_hor_alignment === 'R')
 		{
-			$x_axis += $this->orig_width - ($fontwidth * strlen($this->wm_text)) - $this->wm_shadow_distance;
+			$x_axis += $this->orig_width - ($fontwidth * strlen($this->wm_text)) - $this->wm_shadow_ance;
 		}
 		elseif ($this->wm_hor_alignment === 'C')
 		{
@@ -1358,8 +1358,8 @@ class CI_Image_lib {
 		if ($this->wm_use_drop_shadow)
 		{
 			// Offset from text
-			$x_shad = $x_axis + $this->wm_shadow_distance;
-			$y_shad = $y_axis + $this->wm_shadow_distance;
+			$x_shad = $x_axis + $this->wm_shadow_ance;
+			$y_shad = $y_axis + $this->wm_shadow_ance;
 
 			/* Set RGB values for shadow
 			 *

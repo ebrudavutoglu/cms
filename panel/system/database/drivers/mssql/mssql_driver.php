@@ -11,7 +11,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to use, copy, modify, merge, publish, ribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -472,12 +472,12 @@ class CI_DB_mssql_driver extends CI_DB {
 			}
 
 			return 'SELECT '.$select." FROM (\n\n"
-				.preg_replace('/^(SELECT( DISTINCT)?)/i', '\\1 ROW_NUMBER() OVER('.trim($orderby).') AS '.$this->escape_identifiers('CI_rownum').', ', $sql)
+				.preg_replace('/^(SELECT( INCT)?)/i', '\\1 ROW_NUMBER() OVER('.trim($orderby).') AS '.$this->escape_identifiers('CI_rownum').', ', $sql)
 				."\n\n) ".$this->escape_identifiers('CI_subquery')
 				."\nWHERE ".$this->escape_identifiers('CI_rownum').' BETWEEN '.($this->qb_offset + 1).' AND '.$limit;
 		}
 
-		return preg_replace('/(^\SELECT (DISTINCT)?)/i','\\1 TOP '.$limit.' ', $sql);
+		return preg_replace('/(^\SELECT (INCT)?)/i','\\1 TOP '.$limit.' ', $sql);
 	}
 
 	// --------------------------------------------------------------------

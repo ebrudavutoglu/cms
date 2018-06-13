@@ -11,7 +11,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to use, copy, modify, merge, publish, ribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -333,7 +333,7 @@ if ( ! function_exists('create_captcha'))
 			return FALSE;
 		}
 
-		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height .'; border: 0;" alt=" " />';
+		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="<?php echo base_url('assets'); ?>'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height .'; border: 0;" alt=" " />';
 		ImageDestroy($im);
 
 		return array('word' => $word, 'time' => $now, 'image' => $img, 'filename' => $img_filename);

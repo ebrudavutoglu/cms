@@ -11,7 +11,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to use, copy, modify, merge, publish, ribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -196,11 +196,11 @@ if ( ! function_exists('img'))
 			{
 				if ($index_page === TRUE)
 				{
-					$img .= ' src="'.get_instance()->config->site_url($v).'"';
+					$img .= ' src="<?php echo base_url('assets'); ?>'.get_instance()->config->site_url($v).'"';
 				}
 				else
 				{
-					$img .= ' src="'.get_instance()->config->slash_item('base_url').$v.'"';
+					$img .= ' src="<?php echo base_url('assets'); ?>'.get_instance()->config->slash_item('base_url').$v.'"';
 				}
 			}
 			else

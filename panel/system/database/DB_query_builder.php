@@ -11,7 +11,7 @@
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * to use, copy, modify, merge, publish, ribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
@@ -73,11 +73,11 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	protected $qb_select			= array();
 
 	/**
-	 * QB DISTINCT flag
+	 * QB INCT flag
 	 *
 	 * @var	bool
 	 */
-	protected $qb_distinct			= FALSE;
+	protected $qb_inct			= FALSE;
 
 	/**
 	 * QB FROM data
@@ -446,16 +446,16 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	// --------------------------------------------------------------------
 
 	/**
-	 * DISTINCT
+	 * INCT
 	 *
-	 * Sets a flag which tells the query string compiler to add DISTINCT
+	 * Sets a flag which tells the query string compiler to add INCT
 	 *
 	 * @param	bool	$val
 	 * @return	CI_DB_query_builder
 	 */
-	public function distinct($val = TRUE)
+	public function inct($val = TRUE)
 	{
-		$this->qb_distinct = is_bool($val) ? $val : TRUE;
+		$this->qb_inct = is_bool($val) ? $val : TRUE;
 		return $this;
 	}
 
@@ -1412,7 +1412,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		$qb_cache_orderby = $this->qb_cache_orderby;
 		$this->qb_orderby = $this->qb_cache_orderby = array();
 
-		$result = ($this->qb_distinct === TRUE OR ! empty($this->qb_groupby) OR ! empty($this->qb_cache_groupby) OR $this->qb_limit OR $this->qb_offset)
+		$result = ($this->qb_inct === TRUE OR ! empty($this->qb_groupby) OR ! empty($this->qb_cache_groupby) OR $this->qb_limit OR $this->qb_offset)
 			? $this->query($this->_count_string.$this->protect_identifiers('numrows')."\nFROM (\n".$this->_compile_select()."\n) CI_count_all_results")
 			: $this->query($this->_compile_select($this->_count_string.$this->protect_identifiers('numrows')));
 
@@ -2326,7 +2326,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		}
 		else
 		{
-			$sql = ( ! $this->qb_distinct) ? 'SELECT ' : 'SELECT DISTINCT ';
+			$sql = ( ! $this->qb_inct) ? 'SELECT ' : 'SELECT INCT ';
 
 			if (count($this->qb_select) === 0)
 			{
@@ -2776,7 +2776,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 			'qb_orderby'		=> array(),
 			'qb_aliased_tables'	=> array(),
 			'qb_no_escape'		=> array(),
-			'qb_distinct'		=> FALSE,
+			'qb_inct'		=> FALSE,
 			'qb_limit'		=> FALSE,
 			'qb_offset'		=> FALSE
 		));
