@@ -48,16 +48,18 @@ class Product extends CI_Controller{
                 array(
                     "title"         =>$this->input->post('title'),
                     "description"   =>$this->input->post("description"),
-                    "url"           => "test...",
+                    "url"           => convertToSEO($this->input->post("title")),
                     "rank"          =>0,
                     "isActive"      =>1,
                     "createdAt"     => date("Y-m-d H:i:s")
                 )
             );
+
+            //TODO Alert Sistemi Eklenecek
             if($insert){
-                echo "kayıt tamama";
+                redirect(base_url("product"));
             }else{
-                echo "başarısız";
+                redirect(base_url("product"));
             }
         }else{
             
