@@ -23,6 +23,10 @@ class Product_model extends CI_Model{
     public function add($data = array()){
         return $this->db->insert($this->tableName, $data);
     }
+    /* Güncelle. */
+    public function update($where = array(), $data = array()){
+        return $this->db->where($where)->update($this->tableName, $data);
+    }
 
     
 }

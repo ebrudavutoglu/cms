@@ -17,7 +17,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <!-- form start -->
-                    <form role="form" action="<?php echo base_url("product/save"); ?>" method="post">
+                    <form role="form" action="<?php echo base_url("product/update/$item->id"); ?>" method="post">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Başlık</label>
@@ -31,14 +31,16 @@
                             </div>
                             <div class="form-group">
                                 <div class="mb-3">
-                                    <textarea id="editor1" name="description" style="width: 100%"><?php echo $item->description; ?></textarea>
+                                    <textarea id="editor1" name="description" style="width: 100%">
+                                        <?php echo $item->description; ?>
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+                            <button type="submit" class="btn btn-outline-primary">Güncelle</button>
                             <a href="<?php echo base_url("product/index"); ?>" class="btn btn-md btn-outline-danger">İptal</a>
                         </div>
                     </form>

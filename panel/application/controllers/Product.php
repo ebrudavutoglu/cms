@@ -11,21 +11,21 @@ class Product extends CI_Controller{
     public function index(){
 
         $viewData = new stdClass();
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "list";
+        $viewData->viewFolder       = $this->viewFolder;
+        $viewData->subViewFolder    = "list";
         /* Tablodan verilerin getirilmesi */
-        $items = $this->product_model->get_all();
+        $items                      = $this->product_model->get_all();
         /*View'e gönderilecek değişkenlerin set edilmesi */
-        $viewData->items = $items;
+        $viewData->items            = $items;
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
 
     public function new_form(){
-        $viewData = new stdClass();
+        $viewData                   = new stdClass();
 
         //view'e gönderilecek değişkenlerin set edilmesi...
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "add";
+        $viewData->viewFolder       = $this->viewFolder;
+        $viewData->subViewFolder    = "add";
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
 
@@ -65,10 +65,10 @@ class Product extends CI_Controller{
             }
         }else{
             
-            $viewData = new stdClass();
-            $viewData->viewFolder = $this->viewFolder;
-            $viewData->subViewFolder = "add";
-            $viewData->form_error = true;
+            $viewData                   = new stdClass();
+            $viewData->viewFolder       = $this->viewFolder;
+            $viewData->subViewFolder    = "add";
+            $viewData->form_error       = true;
             $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
         //Basarili ise Kayit islemi baslar
@@ -91,9 +91,75 @@ class Product extends CI_Controller{
 
 
         //view'e gönderilecek değişkenlerin set edilmesi...
-        $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = "update";
-        $viewData->item = $item;
+        $viewData->viewFolder       = $this->viewFolder;
+        $viewData->subViewFolder    = "update";
+        $viewData->item             = $item;
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
+
+    public function update($id){
+        
+        $this->load->library("form_validation");
+        //Kurallar yazilir.
+        $this->form_validation->set_rules("title","Başlık","required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                "required" => "{field} alanı doldurulmalıdır."
+            )
+        );
+        // Form Validation calistirilir.
+        $validate = $this->form_validation->run();
+
+        //Monitor Askısı - Ürün İsmi
+        //monitor-askisi - Ürün Url
+        if($validate){
+            $update = $this->product_model->update(
+                array(
+                    "id" => $id
+                ),
+
+                array(
+                    "title"         =>$this->input->post('title'),
+                    "description"   =>$this->input->post("description"),
+                    "url"           => convertToSEO($this->input->post("title")),
+                )
+            );
+
+            //TODO Alert Sistemi Eklenecek
+            if($update){
+                redirect(base_url("product"));
+            }else{
+                redirect(base_url("product"));
+            }
+        }else{
+            
+            $viewData = new stdClass();
+
+            //Tablodan Verilerin getirilmesi...
+            $item = $this->product_model->get(
+                array(
+                    "id"=>$id
+                )
+            );
+
+
+            $viewData->viewFolder       = $this->viewFolder;
+            $viewData->subViewFolder    = "update";
+            $viewData->form_error       = true;
+            $viewData->item             = $item;
+
+            
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        }
+        //Basarili ise Kayit islemi baslar
+        //Basarisiz ise Hata ekranda gorunur
+
+        
+
+
+
+    }
 }
+
+?>
