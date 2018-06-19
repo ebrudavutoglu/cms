@@ -40,10 +40,32 @@ class Product extends CI_Controller{
         );
         // Form Validation calistirilir.
         $validate = $this->form_validation->run();
+
+        //Monitor Askısı - Ürün İsmi
+        //monitor-askisi - Ürün Url
         if($validate){
-            echo "Kayıt İşlemleri başlar";
+            $insert = $this->product_model->add(
+                array(
+                    "title"         =>$this->input->post('title'),
+                    "description"   =>$this->input->post("description"),
+                    "url"           => "test...",
+                    "rank"          =>0,
+                    "isActive"      =>1,
+                    "createdAt"     => date("Y-m-d H:i:s")
+                )
+            );
+            if($insert){
+                echo "kayıt tamama";
+            }else{
+                echo "başarısız";
+            }
         }else{
-            echo validation_errors();
+            
+            $viewData = new stdClass();
+            $viewData->viewFolder = $this->viewFolder;
+            $viewData->subViewFolder = "add";
+            $viewData->form_error = true;
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
         }
         //Basarili ise Kayit islemi baslar
         //Basarisiz ise Hata ekranda gorunur
