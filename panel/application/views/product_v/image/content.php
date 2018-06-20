@@ -6,7 +6,7 @@
                 <!-- general form elements -->
                 <div class="card card-primary" style="margin-top:30px; padding:30px;">
                     <!-- form start -->
-                    <form action="<?php echo base_url("product/image_upload"); ?>" data-plugin="dropzone" class="dropzone" data-options="{url:'<?php echo base_url("product/image_upload"); ?>">
+                    <form action="<?php echo base_url("product/image_upload/$item->id"); ?>" data-plugin="dropzone" class="dropzone" data-options="{url:'<?php echo base_url("product/image_upload/$item->id"); ?>">
                             <div class="dz-message">
                                 <h3 class="m-h-lg">Yüklemek istediğiniz fotoğrafları buraya sürükleyiniz.</h3>
                                 <p class="m-b-lg text-muted">Yüklemek için dosyalarınızı sürükleyiniz ya da buraya tıklayınız.</p>
