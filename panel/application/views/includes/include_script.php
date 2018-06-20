@@ -40,3 +40,5 @@
 <script src="<?php echo base_url('assets'); ?>/plugins/iCheck/icheck.min.js"></script>
 <!-- CK Editor -->
 <script src="<?php echo base_url('assets'); ?>/plugins/ckeditor/ckeditor.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.22.2/sweetalert2.all.min.js"></script>
+<script src="<?php echo base_url('assets'); ?>/assets/js/custom.js"></script>

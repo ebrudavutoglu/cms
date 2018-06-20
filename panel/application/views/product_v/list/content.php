@@ -56,7 +56,7 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <a href="<?php echo base_url("product/delete/$item->id"); ?>" class="btn  btn-outline-danger btn-sm" style="margin-right:5px;"><i class="fa fa-trash-o"></i>Sil</a>
+                                                <button data-url="<?php echo base_url("product/delete/$item->id"); ?>" class="btn remove-btn  btn-outline-danger btn-sm" style="margin-right:5px;"><i class="fa fa-trash-o"></i>Sil</button>
                                                 <a class="btn  btn-outline-info btn-sm" href="<?php echo base_url("product/update_form/$item->id"); ?>"><i class="fa fa-pencil-square-o"></i>Düzenle</a>
                                             </td>
                                         </tr>
