@@ -1,19 +1,4 @@
 $(document).ready(function(){
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        checkboxClass: 'icheckbox_minimal-blue',
-        radioClass   : 'iradio_minimal-blue'
-      })
-      //Red color scheme for iCheck
-      $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-        checkboxClass: 'icheckbox_minimal-red',
-        radioClass   : 'iradio_minimal-red'
-      })
-      //Flat red color scheme for iCheck
-      $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-        checkboxClass: 'icheckbox_flat-green',
-        radioClass   : 'iradio_flat-green'
-      });
       $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
       // instance, using default configuration.
@@ -34,6 +19,7 @@ $(document).ready(function(){
     });
 
     $(".remove-btn").click(function(){
+      
         var $data_url = $(this).data("url");
         
         swal({
@@ -50,5 +36,23 @@ $(document).ready(function(){
                 window.location.href =  $data_url;
             }
         });
+    });
+
+    $(".isActive").change(function(){
+      
+      var $data = $(this).prop("checked");
+      
+      var $data_url = $(this).data("url");
+      if(typeof $data !== "undefined" && typeof $data_url !== "undefined"){
+        $.post($data_url, {data : $data}, function(response){
+          swal({
+            position: 'top-end',
+            type: 'Başarılı',
+            title: 'Kayıt başarıyla pasif edildi.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        });
+      }
     });
 });

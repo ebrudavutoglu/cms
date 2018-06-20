@@ -49,8 +49,9 @@
                                             <td>
                                                 <label>
                                                     <input 
+                                                        data-url="<?php echo base_url("product/isActiveSetter/$item->id"); ?>"
                                                         type="checkbox" 
-                                                        class="flat-red" 
+                                                        class="flat-red isActive" 
                                                         <?php echo ($item->isActive) ? "checked" :"" ; ?>
                                                     >
                                                 </label>
