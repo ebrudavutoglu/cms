@@ -1,4 +1,5 @@
 $(document).ready(function(){
+      $(".sortable").sortable();
       $(function () {
       // Replace the <textarea id="editor1"> with a CKEditor
       // instance, using default configuration.
@@ -54,5 +55,22 @@ $(document).ready(function(){
           })
         });
       }
+    });
+
+    
+
+    $(".sortable").on("sortupdate", function(event, ui){
+      var $data = $(this).sortable("serialize");
+      var $data_url = $(this).data("url");
+
+      $.post($data_url, {data : $data}, function(response){
+        swal({
+          position: 'top-end',
+          type: 'Başarılı',
+          title: 'Kayıt başarıyla YER DEĞİŞTİRDİ.',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      });
     });
 });
